@@ -76,8 +76,6 @@ variables:
 stages:
   - prerequisites
   - build-and-test
-  - q_build_and_test
-  - l_build_and_bench
 
 # Template for jobs triggering a build-and-test sub-pipeline:
 .build-and-test:
@@ -86,7 +84,7 @@ stages:
     include:
       - local: '.gitlab/custom-jobs-and-variables.yml'
       - project: 'radiuss/radiuss-shared-ci'
-        ref: 'v2023.09.0'
+        ref: 'v2024.04.0'
         file: 'pipelines/${CI_MACHINE}.yml'
       # Add your jobs
       # you can use a local file
@@ -117,6 +115,3 @@ include:
     file: 'utilities/preliminary-ignore-draft-pr.yml'
   # pipelines subscribed by the project
   - local: '.gitlab/subscribed-pipelines.yml'
-  # CJB: old style jobs
-  - local: .gitlab/jobs/quartz-templates.yml
-  - local: .gitlab/jobs/quartz-jobs.yml
